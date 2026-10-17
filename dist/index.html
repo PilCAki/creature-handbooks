@@ -169,26 +169,30 @@
 
           <div class="request-card">
             <p class="form-kicker">A FEW DETAILS</p>
-            <form id="request-form">
-              <div class="form-grid">
-                <label class="field field-wide" for="city">City or town <span aria-hidden="true">*</span>
-                  <input id="city" name="city" type="text" autocomplete="address-level2" placeholder="e.g. Portland" required>
-                </label>
-                <label class="field field-wide" for="region">State, region or country <span aria-hidden="true">*</span>
-                  <input id="region" name="region" type="text" autocomplete="address-level1" placeholder="e.g. Oregon, USA" required>
-                </label>
-                <label class="field field-wide" for="email">Your reply email <span aria-hidden="true">*</span>
-                  <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
-                </label>
-                <label class="field" for="neighborhood">Neighborhood or ZIP <span class="optional">optional</span>
-                  <input id="neighborhood" name="neighborhood" type="text" autocomplete="postal-code" placeholder="A part of town">
-                </label>
-                <label class="field field-wide" for="notes">What would you love to see? <span class="optional">optional</span>
-                  <textarea id="notes" name="notes" rows="3" placeholder="A favorite park, a local legend, a creature you always spot…"></textarea>
-                </label>
-              </div>
-              <button class="button button-blue form-submit" type="submit">Preview your request <span aria-hidden="true">↗</span></button>
-              <p class="form-footnote">Your email is included so we can reply. Nothing is sent by this page.</p>
+            <form id="request-form" method="post" action="#request">
+              <fieldset class="request-fields" id="request-fields" disabled>
+                <legend class="visually-hidden">Request details</legend>
+                <div class="form-grid">
+                  <label class="field field-wide" for="city">City or town <span aria-hidden="true">*</span>
+                    <input id="city" name="city" type="text" autocomplete="address-level2" placeholder="e.g. Portland" required>
+                  </label>
+                  <label class="field field-wide" for="region">State, region or country <span aria-hidden="true">*</span>
+                    <input id="region" name="region" type="text" autocomplete="address-level1" placeholder="e.g. Oregon, USA" required>
+                  </label>
+                  <label class="field field-wide" for="email">Your reply email <span aria-hidden="true">*</span>
+                    <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+                  </label>
+                  <label class="field" for="neighborhood">Neighborhood or ZIP <span class="optional">optional</span>
+                    <input id="neighborhood" name="neighborhood" type="text" autocomplete="postal-code" placeholder="A part of town">
+                  </label>
+                  <label class="field field-wide" for="notes">What would you love to see? <span class="optional">optional</span>
+                    <textarea id="notes" name="notes" rows="3" placeholder="A favorite park, a local legend, a creature you always spot…"></textarea>
+                  </label>
+                </div>
+                <button class="button button-blue form-submit" type="submit">Preview your request <span aria-hidden="true">↗</span></button>
+                <p class="form-footnote">Your email is included so we can reply. Nothing is sent by this page.</p>
+              </fieldset>
+              <noscript><p class="noscript-note">To keep your details private, this form needs scripts enabled to prepare a request preview. This page does not send your details.</p></noscript>
             </form>
 
             <section class="review-panel" id="request-review" aria-labelledby="review-title" hidden>

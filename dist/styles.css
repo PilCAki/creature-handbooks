@@ -83,6 +83,16 @@ textarea {
   transform: translateY(0);
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
 .wrap {
   width: min(100% - 3rem, 1160px);
   margin-inline: auto;
@@ -873,6 +883,13 @@ textarea {
   gap: 1rem;
 }
 
+.request-fields {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 .field {
   display: block;
   color: var(--ink);
@@ -944,6 +961,16 @@ textarea {
   color: var(--muted-ink);
   font-size: .75rem;
   text-align: center;
+}
+
+.noscript-note {
+  margin: 1rem 0 0;
+  padding: .85rem 1rem;
+  border-left: 3px solid var(--blue);
+  background: #edf4fa;
+  color: var(--ink);
+  font-size: .82rem;
+  font-weight: 650;
 }
 
 .review-panel {
@@ -1316,7 +1343,7 @@ textarea {
   }
 
   .button-small {
-    min-height: 42px;
+    min-height: 44px;
   }
 
   .hero h1 {

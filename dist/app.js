@@ -95,6 +95,9 @@ gallery.addEventListener("keydown", (event) => {
 });
 
 const requestForm = document.getElementById("request-form");
+const requestFields = document.getElementById("request-fields");
+const cityInput = document.getElementById("city");
+const regionInput = document.getElementById("region");
 const reviewPanel = document.getElementById("request-review");
 const reviewTitle = document.getElementById("review-title");
 const reviewPlace = document.getElementById("review-place");
@@ -104,8 +107,16 @@ const copyRequestButton = document.getElementById("copy-request");
 const openEmailDraftButton = document.getElementById("open-email-draft");
 const reviewHint = document.getElementById("review-hint");
 
+cityInput.addEventListener("input", () => cityInput.setCustomValidity(""));
+regionInput.addEventListener("input", () => regionInput.setCustomValidity(""));
+
 requestForm.addEventListener("submit", (event) => {
   event.preventDefault();
+
+  cityInput.value = cityInput.value.trim();
+  regionInput.value = regionInput.value.trim();
+  cityInput.setCustomValidity(cityInput.value ? "" : "Enter a city or town; spaces alone are not enough.");
+  regionInput.setCustomValidity(regionInput.value ? "" : "Enter a state, region or country; spaces alone are not enough.");
   if (!requestForm.reportValidity()) return;
 
   const formData = new FormData(requestForm);
@@ -155,12 +166,10 @@ if (CONTACT_EMAIL.trim()) {
   reviewHint.textContent = "Your email app will open with this request as a draft. Review it there before you send.";
   openEmailDraftButton.addEventListener("click", () => {
     const subject = `Creature Handbooks request — ${reviewPlace.textContent}`;
-    const query = new URLSearchParams({
-      subject,
-      body: requestMessage.value
-    });
-    window.location.href = `mailto:${CONTACT_EMAIL}?${query.toString()}`;
+    const normalizedBody = requestMessage.value.replace(/\r\n|\r|\n/g, "\r\n");
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(normalizedBody)}`;
   });
 }
 
 document.getElementById("year").textContent = String(new Date().getFullYear());
+requestFields.disabled = false;
